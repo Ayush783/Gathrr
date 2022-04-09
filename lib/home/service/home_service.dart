@@ -1,6 +1,5 @@
 import 'dart:convert';
 import 'dart:developer' as dev;
-import 'dart:math';
 
 import 'package:gathrr/home/model/event_response.dart';
 import 'package:http/http.dart' as http;

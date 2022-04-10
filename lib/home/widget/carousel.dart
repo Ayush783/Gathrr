@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gathrr/event/event.dart';
 import 'package:gathrr/home/bloc/home_bloc.dart';
 import 'package:gathrr/home/model/event.dart';
 import 'package:gathrr/theme/theme.dart';
@@ -45,6 +46,7 @@ class Carousel extends StatelessWidget {
                       title: upcomingEvents[index].eventName,
                       img: upcomingEvents[index].event_banner_img1,
                       link: upcomingEvents[index].isBooking,
+                      event: upcomingEvents[index],
                     );
                   }
                 }
@@ -66,22 +68,26 @@ class CarouselItem extends StatelessWidget {
       this.img,
       this.link,
       this.isLoading = false,
+      this.event,
       this.hasError = false})
       : super(key: key);
 
   final String? title, img, link;
   final bool isLoading, hasError;
+  final Event? event;
 
   const CarouselItem.loading()
       : title = 'Loading...',
         img = '',
         link = '',
         isLoading = true,
+        event = null,
         hasError = false;
   const CarouselItem.error()
       : title = '',
         img = '',
         link = '',
+        event = null,
         isLoading = false,
         hasError = true;
 
@@ -129,6 +135,16 @@ class CarouselItem extends StatelessWidget {
                     TextButton(
                       onPressed: () {
                         log(img!);
+                        if (!isLoading || !hasError) {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => EventView(
+                                event: event!,
+                              ),
+                            ),
+                          );
+                        }
                       },
                       style: TextButton.styleFrom(
                         backgroundColor: const Color(0xffffff00),

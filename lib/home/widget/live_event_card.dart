@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:gathrr/event/event.dart';
 import 'package:gathrr/home/bloc/home_bloc.dart';
 
 import '../../theme/theme.dart';
@@ -58,7 +59,18 @@ class LiveEventCard extends StatelessWidget {
                     ),
                     const SizedBox(height: 4),
                     TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        if (!isLoading) {
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                              builder: (context) => EventView(
+                                event: events.firstWhere(
+                                    (element) => element.eventId == 6),
+                              ),
+                            ),
+                          );
+                        }
+                      },
                       style: TextButton.styleFrom(
                           backgroundColor: const Color(0xff02b140),
                           shape: RoundedRectangleBorder(

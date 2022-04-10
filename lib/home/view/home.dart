@@ -17,9 +17,50 @@ class HomeView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => HomeBloc(),
-      child: const HomeViewBody(),
+    return WillPopScope(
+      onWillPop: () async {
+        final result = await showDialog(
+            context: context,
+            builder: (context) {
+              return AlertDialog(
+                content: Text(
+                  'Do you want to exit the application',
+                  style: kTextstyle3,
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        false,
+                      );
+                    },
+                    child: Text(
+                      'No',
+                      style: kTextstyle3,
+                    ),
+                  ),
+                  TextButton(
+                    onPressed: () {
+                      Navigator.pop(
+                        context,
+                        true,
+                      );
+                    },
+                    child: Text(
+                      'Yes',
+                      style: kTextstyle3,
+                    ),
+                  )
+                ],
+              );
+            });
+        return result;
+      },
+      child: BlocProvider(
+        create: (context) => HomeBloc(),
+        child: const HomeViewBody(),
+      ),
     );
   }
 }

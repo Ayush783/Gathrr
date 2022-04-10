@@ -24,9 +24,9 @@ class PastEventsListView extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: GridView.builder(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
           crossAxisCount: 1,
-          childAspectRatio: 1.9,
+          childAspectRatio: size.height.toInt() <= 640 ? 1.5 : 1.9,
           mainAxisSpacing: 8,
         ),
         padding: const EdgeInsets.symmetric(vertical: 24),

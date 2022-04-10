@@ -25,7 +25,7 @@ class Carousel extends StatelessWidget {
 
     return SizedBox(
       width: size.width,
-      height: size.height / 4,
+      height: size.height.toInt() <= 640 ? size.height / 3 : size.height / 4,
       child: Column(
         children: [
           Expanded(

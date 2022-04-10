@@ -8,3 +8,9 @@ abstract class HomeEvent extends Equatable {
 }
 
 class GetEvents extends HomeEvent {}
+
+class CarouselSwipe extends HomeEvent {
+  final int index;
+
+  const CarouselSwipe(this.index);
+}

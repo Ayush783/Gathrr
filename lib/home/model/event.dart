@@ -154,6 +154,39 @@ class Event extends Equatable {
   }
 
   @override
-  // TODO: implement props
-  List<Object?> get props => throw UnimplementedError();
+  List<Object?> get props => [
+        eventId,
+        eventName,
+        eventCategory_id,
+        eventDescription,
+        eventStartdate,
+        eventEnddate,
+        eventStarttime,
+        eventEndtime,
+        eventBanneroneimg,
+        eventType,
+        eventCode,
+        eventBannertwoimg,
+        eventQrcode,
+        eventLocation,
+        eventLat,
+        eventLong,
+        eventStatus,
+        eventCreated_at,
+        categoryId,
+        categoryOrganizer_id,
+        categoryFor,
+        categoryName,
+        categoryImage,
+        categoryStatus,
+        categoryCreated_at,
+        Rating,
+        isCheckin,
+        isAgenda,
+        isSpeaker,
+        isBooking,
+        isRates,
+        event_banner_img1,
+        event_banner_img2,
+      ];
 }
